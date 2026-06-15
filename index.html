@@ -1,316 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Vipin Pandey</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Vipin Pandey – Software Engineer</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;font-size:11.5px;color:#1a1a1a;background:#e8ebf0;line-height:1.45}
 
-    .resume-container {
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-  </style>
+/* PRINT: force single page */
+@media print{
+  html,body{height:100%;margin:0;padding:0;background:#fff}
+  .print-btn{display:none!important}
+  .page{margin:0;box-shadow:none;border-radius:0;width:100%;max-width:100%}
+  @page{size:A4;margin:0}
+}
+
+.print-btn{max-width:820px;margin:12px auto 8px;text-align:right;padding-right:4px}
+.print-btn button{background:#0f2044;color:#fff;border:none;padding:7px 18px;font-size:12px;border-radius:4px;cursor:pointer;font-family:inherit}
+.print-btn button:hover{background:#1a6fba}
+
+.page{max-width:820px;margin:0 auto;background:#fff;box-shadow:0 4px 24px rgba(0,0,0,.12);border-radius:4px;overflow:hidden}
+
+/* HEADER */
+.header{background:#0f2044;padding:18px 32px 14px}
+.header h1{font-size:26px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#fff;margin-bottom:2px}
+.header-title{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#5db8f5;margin-bottom:10px}
+.contact-row{display:flex;flex-wrap:wrap;gap:3px 14px;font-size:10px;color:#b8cfe8}
+.contact-row a{color:#5db8f5;text-decoration:none}
+.contact-row span{display:flex;align-items:center;gap:4px}
+
+/* BODY */
+.body{display:grid;grid-template-columns:1fr 220px}
+
+/* MAIN */
+.main{padding:14px 22px 16px 32px;border-right:1px solid #e4e9f2}
+
+/* SIDEBAR */
+.sidebar{padding:14px 18px 16px;background:#f5f7fb}
+
+/* SECTION */
+.section{margin-bottom:11px}
+.section:last-child{margin-bottom:0}
+.section-title{font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#1a6fba;border-bottom:1.5px solid #1a6fba;padding-bottom:3px;margin-bottom:7px}
+.sidebar .section-title{color:#0f2044;border-bottom-color:#0f2044}
+
+/* SUMMARY */
+.summary-text{font-size:10.5px;color:#333;line-height:1.6}
+
+/* EXPERIENCE */
+.job{margin-bottom:9px}
+.job:last-child{margin-bottom:0}
+.job-header{display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:0px}
+.job-title{font-size:11.5px;font-weight:700;color:#0f2044}
+.job-date{font-size:9.5px;color:#1a6fba;font-weight:600;white-space:nowrap;background:#e4f0fb;padding:1px 6px;border-radius:3px;flex-shrink:0}
+.job-company{font-size:10.5px;color:#666;font-style:italic;margin-bottom:4px}
+.job ul{list-style:none;padding-left:0}
+.job ul li{font-size:10.5px;color:#333;line-height:1.5;margin-bottom:2px;padding-left:12px;position:relative}
+.job ul li::before{content:'▸';position:absolute;left:0;color:#1a6fba;font-size:8px;top:2px}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px}
+.project{border-left:2px solid #1a6fba;padding-left:7px}
+.project-name{font-size:10.5px;font-weight:700;color:#0f2044;margin-bottom:1px}
+.project-desc{font-size:10px;color:#444;margin-bottom:3px;line-height:1.45}
+.project-stack span{display:inline-block;background:#e4f0fb;color:#1a6fba;padding:1px 5px;border-radius:2px;font-weight:500;font-size:9.5px;margin:1px 2px 0 0}
+
+/* ACHIEVEMENTS */
+.achieve-item{font-size:10.5px;color:#333;padding-left:14px;position:relative;margin-bottom:4px;line-height:1.5}
+.achieve-item::before{content:'★';position:absolute;left:0;color:#f0a500;font-size:10px;top:0}
+
+/* EDUCATION */
+.edu-item{margin-bottom:9px}
+.edu-item:last-child{margin-bottom:0}
+.edu-degree{font-size:10.5px;font-weight:700;color:#0f2044;line-height:1.35}
+.edu-meta{display:flex;justify-content:space-between;font-size:9.5px;color:#1a6fba;font-weight:600;margin:1px 0 2px}
+.edu-school{font-size:9.5px;color:#555;font-style:italic;line-height:1.35}
+
+/* SKILLS */
+.skill-group{margin-bottom:7px}
+.skill-group:last-child{margin-bottom:0}
+.skill-group-title{font-size:9px;font-weight:700;color:#0f2044;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px}
+.skill-tag{display:inline-block;background:#dce8f5;color:#0f2044;font-size:9.5px;font-weight:500;padding:2px 6px;border-radius:3px;margin:1px 2px 1px 0}
+
+/* LINKS */
+.link-item{display:flex;align-items:center;gap:5px;font-size:10px;margin-bottom:4px}
+.link-item a{color:#1a6fba;text-decoration:none}
+.link-item a:hover{text-decoration:underline}
+</style>
 </head>
-
 <body>
-  <div id="root"></div>
 
-  <script type="text/babel">
-    const PhoneIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-      </svg>
-    );
 
-    const MailIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-      </svg>
-    );
 
-    const LinkedinIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-        <rect width="4" height="12" x="2" y="9"></rect>
-        <circle cx="4" cy="4" r="2"></circle>
-      </svg>
-    );
+<div class="page">
 
-    const LocationIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-        <circle cx="12" cy="10" r="3"></circle>
-      </svg>
-    );
+  <!-- HEADER -->
+  <header class="header">
+    <h1>Vipin Pandey</h1>
+    <div class="header-title">Software Engineer</div>
+    <div class="contact-row">
+      <span>📞 <a href="tel:+919521459748">+91 9521459748</a></span>
+      <span>✉ <a href="mailto:vipinpandey3510@gmail.com">vipinpandey3510@gmail.com</a></span>
+      <span>🔗 <a href="https://linkedin.com/in/vipin-pandey" target="_blank">linkedin.com/in/vipin-pandey</a></span>
+      <span>🐙 <a href="https://github.com/vipin-ui" target="_blank">github.com/vipin-ui</a></span>
+      <span>🌐 <a href="https://vipin-plum.vercel.app" target="_blank">vipin-plum.vercel.app</a></span>
+      <span>📍 Jaipur, Rajasthan</span>
+    </div>
+  </header>
 
-    const GlobeIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <line x1="2" y1="12" x2="22" y2="12"></line>
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-      </svg>
-    );
+  <div class="body">
 
-    const GithubIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-      </svg>
-    );
+    <!-- MAIN -->
+    <main class="main">
 
-    const resumeData = {
-      name: 'Vipin Pandey',
-      title: 'Software Engineer',
-      location: 'Jaipur, Rajasthan',
-      summary: 'A dedicated and motivated Computer Science student with a strong foundation in full-stack web development, data structures, and algorithms. Eager to leverage my skills in JavaScript, React, and the MERN stack to contribute to challenging software engineering projects and build innovative solutions.',
-      contact: [
-        { type: 'phone', value: '+91 9521459748', href: 'tel:9521459748' },
-        { type: 'email', value: 'vipinpandey3510@gmail.com', href: 'mailto:vipinpandey3510@gmail.com' },
-        { type: 'linkedin', value: 'linkedin.com/in/vipin-pandey', href: 'https://www.linkedin.com/in/vipin-pandey-aa060b1a9/' },
-        { type: 'github', value: 'github.com/vipin-ui', href: 'https://github.com/vipin-ui' },
-        { type: 'portfolio', value: 'vipin-plum.vercel.app', href: 'https://vipin-plum.vercel.app/' },
-        { type: 'location', value: 'Jaipur, Rajasthan', href: '#' }
-      ],
-      education: [
-        {
-          degree: 'Bachelor of Technology (B.Tech)',
-          institution: 'Swami Keshvanand Institute of Technology, Management & Gramothan',
-          stream: 'Computer Science & Engineering',
-          duration: '2022 – 2025',
-          cgpa: '8.9 CGPA'
-        },
-        {
-          degree: 'Diploma',
-          institution: 'Suresh Gyan Vihar University',
-          stream: 'Computer Science & Engineering',
-          duration: '2019 – 2022',
-          cgpa: '7.6 CGPA'
-        }
-      ],
-     experience: [
-  {
-    role: 'Frontend Developer',
-    company: 'Codecrafts Digisoft',
-    duration: 'Nov 2025 – Present',
-    description: [
-      'Developed B2B, e-commerce, retail, and FinTech websites.',
-      'Built responsive and scalable front-end interfaces using React.js, HTML, CSS, and JavaScript.',
-      'Created secure and user-friendly admin panels for managing users, products, orders, and payments.',
-      'Integrated PHP backend services and RESTful APIs.',
-      'Implemented dashboards, role-based access control, and payment workflows.',
-      'Optimized applications for performance, security, and production deployment.'
-    ]
-  },
-  {
-    role: 'Full Stack Developer',
-    company: 'Comply Relex',
-    duration: 'July 2025 – Nov 2025',
-    description: [
-      'Developed and maintained scalable web applications using the MERN stack (MongoDB, Express.js, React, Node.js).',
-      'Designed and implemented RESTful APIs for seamless front-end and back-end communication.',
-      'Worked on both frontend and backend features including authentication, CRUD operations, and dashboards.',
-      'Collaborated with cross-functional teams to plan, develop, and deploy features in an agile environment.'
-    ]
-  },
-  {
-    role: 'MERN Stack Intern',
-    company: 'In-House Summer Internship Program (SKIT, Jaipur)',
-    duration: 'Summer 2023',
-    description: [
-      'Developed full-stack web applications using MongoDB, Express.js, React, and Node.js.',
-      'Built and consumed RESTful APIs to connect front-end interfaces with backend services.',
-      'Assisted in implementing authentication, role-based access, and database schemas.',
-      'Participated in code reviews, testing, and agile development practices.'
-    ]
-  }
-],
-
-      projects: [
-        {
-          name: 'BookingApp-main',
-          description: 'Developed a full-stack booking application with dynamic UI and backend data handling.',
-          techStack: ['JavaScript', 'Node.js', 'Express', 'MySQL']
-        },
-        {
-          name: 'chai-with-backend',
-          description: 'Built a full-stack app integrating backend APIs for user and data management.',
-          techStack: ['JavaScript', 'Node.js', 'Express', 'MongoDB']
-        },
-        {
-          name: 'BookingApp',
-          description: 'Created an interactive booking interface with PHP backend and MySQL database.',
-          techStack: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL']
-        },
-        {
-          name: 'ochi-react',
-          description: 'Developed a responsive React application with backend integration and state management.',
-          techStack: ['React.js', 'Node.js', 'Express', 'MongoDB']
-        },
-        {
-          name: 'QUIZ-APP',
-          description: 'Built a quiz application with dynamic question rendering, scoring, and full-stack backend support.',
-          techStack: ['React.js', 'Node.js', 'Express', 'MongoDB']
-        }
-      ],
-      skills: [
-        { category: 'Programming Languages', skills: ['C++', 'JavaScript'] },
-        { category: 'Technologies', skills: ['React.js', 'HTML5', 'CSS3'] },
-        { category: 'Backend Basics', skills: ['Node.js', 'Express.js', 'PHP'] },
-        { category: 'Database', skills: ['MySQL', 'MongoDB', 'phpMyAdmin'] },
-        { category: 'Version Control', skills: ['Git', 'GitHub'] },
-        { category: 'Testing', skills: ['Manual Testing', 'Test Case Design'] },
-        { category: 'Tools & Frameworks', skills: ['VS Code', 'Postman'] }
-      ],
-      achievements: [
-        { description: 'Consistently solving problems on LeetCode, including completing the "150 Top Interview Questions" list.' },
-        { description: 'Actively participating in the "100 Days of DSA Challenge" to strengthen problem-solving skills.' }
-      ]
-    };
-
-    const Section = ({ title, children, className = '' }) => (
-      <section className={`mt-4 ${className}`}>
-        <h2 className="text-base font-bold text-slate-800 border-b-2 border-slate-300 pb-1 mb-2 uppercase tracking-wider">
-          {title}
-        </h2>
-        {children}
+      <!-- SUMMARY -->
+      <section class="section">
+        <div class="section-title">Summary</div>
+        <p class="summary-text">Dedicated Computer Science student with a strong foundation in full-stack web development, data structures, and algorithms. Skilled in JavaScript, React, and the MERN stack, eager to contribute to challenging software engineering projects and build innovative solutions.</p>
       </section>
-    );
 
-    const ContactItem = ({ item }) => {
-      const icons = {
-        phone: <PhoneIcon className="w-3.5 h-3.5 text-slate-600" />,
-        email: <MailIcon className="w-3.5 h-3.5 text-slate-600" />,
-        linkedin: <LinkedinIcon className="w-3.5 h-3.5 text-slate-600" />,
-        location: <LocationIcon className="w-3.5 h-3.5 text-slate-600" />,
-        github: <GithubIcon className="w-3.5 h-3.5 text-slate-600" />,
-        portfolio: <GlobeIcon className="w-3.5 h-3.5 text-slate-600" />,
-      };
+      <!-- EXPERIENCE -->
+      <section class="section">
+        <div class="section-title">Experience</div>
 
-      return (
-        <a href={item.href} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-1.5 text-xs text-slate-700 hover:text-blue-600 transition-colors duration-300">
-          {icons[item.type]}
-          <span>{item.value}</span>
-        </a>
-      );
-    };
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Frontend Developer</div>
+            <div class="job-date">Nov 2025 – Present</div>
+          </div>
+          <div class="job-company">Codecrafts Digisoft</div>
+          <ul>
+            <li>Developed B2B, e-commerce, retail, and FinTech websites using React.js, HTML, CSS, and JavaScript.</li>
+            <li>Created secure admin panels for managing users, products, orders, and payments with role-based access.</li>
+            <li>Integrated PHP backend services and RESTful APIs; optimized apps for performance and production deployment.</li>
+          </ul>
+        </div>
 
-    const Resume = () => {
-      return (
-        <div className="p-8">
-          <header className="text-center mb-4 border-b pb-3">
-            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">{resumeData.name}</h1>
-            <p className="text-base text-blue-700 font-medium mt-1">{resumeData.title}</p>
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Full Stack Developer</div>
+            <div class="job-date">July 2025 – Nov 2025</div>
+          </div>
+          <div class="job-company">Comply Relex</div>
+          <ul>
+            <li>Built scalable web applications using the MERN stack with RESTful APIs for seamless communication.</li>
+            <li>Delivered authentication, CRUD operations, and dashboards in an agile cross-functional environment.</li>
+          </ul>
+        </div>
 
-            <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1">
-              {resumeData.contact.map((item) => <ContactItem key={item.type} item={item} />)}
-            </div>
-          </header>
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">MERN Stack Intern</div>
+            <div class="job-date">Summer 2023</div>
+          </div>
+          <div class="job-company">In-House Summer Internship – SKIT, Jaipur</div>
+          <ul>
+            <li>Developed full-stack apps using MongoDB, Express.js, React, and Node.js; built and consumed RESTful APIs.</li>
+            <li>Implemented authentication, role-based access, and database schemas; participated in code reviews and agile sprints.</li>
+          </ul>
+        </div>
 
-          <Section title="Summary" className="mt-0">
-            <p className="text-slate-700 leading-relaxed text-sm">{resumeData.summary}</p>
-          </Section>
+      </section>
 
-          <Section title="Education">
-            <div className="space-y-2">
-              {resumeData.education.map((edu, index) => (
-                <div key={index}>
-                  <div className="flex justify-between items-baseline">
-                    <h3 className="font-bold text-sm text-slate-800">{edu.degree} - {edu.stream}</h3>
-                    <p className="text-xs font-medium text-slate-600">{edu.duration}</p>
-                  </div>
-                  <div className="flex justify-between items-baseline">
-                    <p className="text-slate-700 italic text-sm">{edu.institution}</p>
-                    <p className="text-xs font-medium text-slate-600">{edu.cgpa}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Section>
+      <!-- PROJECTS -->
+      <section class="section">
+        <div class="section-title">Projects</div>
+        <div class="projects-grid">
 
-          <Section title="Skills">
-            <div className="grid grid-cols-2 gap-x-6 gap-y-2">
-              {resumeData.skills.map((skillGroup) => (
-                <div key={skillGroup.category}>
-                  <h3 className="font-semibold text-slate-700 text-sm">{skillGroup.category}:</h3>
-                  <p className="text-slate-600 text-xs">{skillGroup.skills.join(', ')}</p>
-                </div>
-              ))}
-            </div>
-          </Section>
+          <div class="project">
+            <div class="project-name">BookingApp-main</div>
+            <div class="project-desc">Full-stack booking app with dynamic UI and backend data handling.</div>
+            <div class="project-stack"><span>Node.js</span><span>Express</span><span>MySQL</span></div>
+          </div>
 
-          <Section title="Experience">
-            <div className="space-y-3">
-              {resumeData.experience.map((exp, index) => (
-                <div key={index}>
-                  <div className="flex justify-between items-baseline">
-                    <h3 className="font-bold text-sm text-slate-800">{exp.role}</h3>
-                    <p className="text-xs font-medium text-slate-600">{exp.duration}</p>
-                  </div>
-                  <p className="text-slate-700 italic text-sm">{exp.company}</p>
-                  <ul className="mt-1 list-disc list-inside space-y-0.5 text-slate-700 text-xs">
-                    {exp.description.map((point, i) => <li key={i}>{point}</li>)}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </Section>
+          <div class="project">
+            <div class="project-name">chai-with-backend</div>
+            <div class="project-desc">Full-stack app with backend APIs for user and data management.</div>
+            <div class="project-stack"><span>Node.js</span><span>Express</span><span>MongoDB</span></div>
+          </div>
 
-          <Section title="Projects">
-            <div className="space-y-2.5">
-              {resumeData.projects.map((proj, index) => (
-                <div key={index}>
-                  <h3 className="font-bold text-sm text-slate-800">{proj.name}</h3>
-                  <p className="text-slate-700 text-xs leading-relaxed">{proj.description}</p>
-                  <p className="text-xs text-slate-600">
-                    <span className="font-semibold">Tech Stack:</span> {proj.techStack.join(', ')}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </Section>
+          <div class="project">
+            <div class="project-name">ochi-react</div>
+            <div class="project-desc">Responsive React app with backend integration and state management.</div>
+            <div class="project-stack"><span>React.js</span><span>Node.js</span><span>MongoDB</span></div>
+          </div>
 
-          <Section title="Achievements">
-            <ul className="list-disc list-inside space-y-0.5 text-slate-700 text-xs">
-              {resumeData.achievements.map((ach, index) => (
-                <li key={index}>{ach.description}</li>
-              ))}
-            </ul>
-          </Section>
+          <div class="project">
+            <div class="project-name">QUIZ-APP</div>
+            <div class="project-desc">Quiz app with dynamic question rendering, scoring, and full-stack backend.</div>
+            <div class="project-stack"><span>React.js</span><span>Node.js</span><span>MongoDB</span></div>
+          </div>
+
+          <div class="project">
+            <div class="project-name">BookingApp</div>
+            <div class="project-desc">Interactive booking interface with PHP backend and MySQL database.</div>
+            <div class="project-stack"><span>PHP</span><span>MySQL</span><span>JavaScript</span></div>
+          </div>
 
         </div>
-      );
-    };
+      </section>
 
-    const App = () => {
-      return (
-        <main className="bg-slate-100 min-h-screen font-sans text-slate-800 py-8 px-4">
-          <div className="resume-container bg-white shadow-lg">
-            <Resume />
-          </div>
-        </main>
-      );
-    };
+      <!-- ACHIEVEMENTS -->
+      <section class="section">
+        <div class="section-title">Achievements</div>
+        <div class="achieve-item">Completed LeetCode "150 Top Interview Questions" list consistently.</div>
+        <div class="achieve-item">Actively participating in the "100 Days of DSA Challenge" to strengthen problem-solving skills.</div>
+      </section>
 
-    const rootElement = document.getElementById('root');
-    const root = ReactDOM.createRoot(rootElement);
-    root.render(
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    );
-  </script>
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- EDUCATION -->
+      <section class="section">
+        <div class="section-title">Education</div>
+
+        <div class="edu-item">
+          <div class="edu-degree">B.Tech – CS &amp; Engineering</div>
+          <div class="edu-meta"><span>2022 – 2025</span><span>8.9 CGPA</span></div>
+          <div class="edu-school">Swami Keshvanand Institute of Technology, Management &amp; Gramothan</div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-degree">Diploma – CS &amp; Engineering</div>
+          <div class="edu-meta"><span>2019 – 2022</span><span>7.6 CGPA</span></div>
+          <div class="edu-school">Suresh Gyan Vihar University</div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section class="section">
+        <div class="section-title">Skills</div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Languages</div>
+          <span class="skill-tag">C++</span><span class="skill-tag">JavaScript</span>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Backend</div>
+          <span class="skill-tag">Node.js</span><span class="skill-tag">Express.js</span><span class="skill-tag">PHP</span><span class="skill-tag">REST APIs</span>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Frontend</div>
+          <span class="skill-tag">React.js</span><span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Database</div>
+          <span class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">phpMyAdmin</span>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Tools &amp; Version Control</div>
+          <span class="skill-tag">Git</span><span class="skill-tag">GitHub</span><span class="skill-tag">VS Code</span><span class="skill-tag">Postman</span>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Testing</div>
+          <span class="skill-tag">Manual Testing</span><span class="skill-tag">Test Case Design</span>
+        </div>
+      </section>
+
+      <!-- LINKS -->
+      <section class="section">
+        <div class="section-title">Links</div>
+        <div class="link-item">🌐 <a href="https://vipin-plum.vercel.app" target="_blank">vipin-plum.vercel.app</a></div>
+        <div class="link-item">🐙 <a href="https://github.com/vipin-ui" target="_blank">github.com/vipin-ui</a></div>
+        <div class="link-item">🔗 <a href="https://linkedin.com/in/vipin-pandey" target="_blank">linkedin.com/in/vipin-pandey</a></div>
+      </section>
+
+    </aside>
+  </div>
+</div>
+
 </body>
-
 </html>
-
